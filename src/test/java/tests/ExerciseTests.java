@@ -26,6 +26,6 @@ public class ExerciseTests extends BaseTests {
         app.exercisesPage().clickOnSaveButton();
         app.exercisesPage().clickSaveExerciseButton();
         Assert.assertTrue(app.exercisesPage().isExerciseSaved(exerciseName));
-        app.exercisesPage().maxNumberOfItems(4);
+        app.exercisesPage().maxNumberOfItems(2);
     }
 }
