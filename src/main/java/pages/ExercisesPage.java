@@ -38,6 +38,14 @@ public class ExercisesPage extends BaseHelper {
     WebElement saveIntervalButton;
     @FindBy(xpath = "//div[text()=' Save ']")
     WebElement saveExerciseButton;
+    @FindBy(xpath = "//div[@class='app-btn__content' and text()=' See all']")
+    WebElement seeAllButton;
+    @FindBy(xpath = "//i[@class='q-icon text-white notranslate material-icons' and text()='more_vert']")
+    WebElement exerciseMenu;
+    @FindBy(xpath = "//div[@class='q-item__section column q-item__section--main justify-center' and text()='Delete']")
+    WebElement deleteMenuButton;
+    @FindBy(xpath = "//div[@class='app-btn__content' and text()=' Delete ']")
+    WebElement confirmDeleteButton;
 
     public void clickNewExerciseButton() {
         newExerciseButton.click();
@@ -90,6 +98,7 @@ public class ExercisesPage extends BaseHelper {
         saveExerciseButton.click();
     }
 
+
     public boolean isExerciseSaved(String name) {
         try {
             Thread.sleep(5000);
@@ -97,6 +106,11 @@ public class ExercisesPage extends BaseHelper {
             throw new RuntimeException(e);
         }
         List<WebElement> list = webDriver.findElements(By.xpath("//h6"));
+        if (list.size() >= 6) {
+//            if (seeAllButton.isDisplayed())
+//                seeAllButton.click();
+            list = webDriver.findElements(By.xpath("//h6"));
+        }
         System.out.println(list.size());
         for (WebElement x : list) {
             if (x.getText().equals(name)) {
@@ -107,6 +121,27 @@ public class ExercisesPage extends BaseHelper {
         return false;
 
 
+    }
+
+    public void maxNumberOfItems(int maxNumberOfItems) {
+        List<WebElement> list = webDriver.findElements(By.xpath("//h6"));
+        if (maxNumberOfItems < list.size()) {
+            int difference = list.size() - maxNumberOfItems;
+            for (int i = 0; i < difference; i++) {
+                deleteExercise();
+            }
+        }
+    }
+
+    public void deleteExercise() {
+        exerciseMenu.click();
+        deleteMenuButton.click();
+        confirmDeleteButton.click();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
 
