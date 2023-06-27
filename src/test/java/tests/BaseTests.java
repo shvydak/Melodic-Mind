@@ -19,13 +19,9 @@ public class BaseTests {
 
     @BeforeClass
     public void preConditions() throws IOException {
-        String email;
-        String password;
-
         BufferedReader reader = new BufferedReader(new FileReader(new File("userLogin.csv")));
         String line = reader.readLine();
         String[] split = line.split(",");
-
 
         UserLogin user = UserLogin.builder()
                 .email(split[0])
