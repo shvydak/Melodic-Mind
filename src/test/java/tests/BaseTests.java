@@ -22,7 +22,7 @@ public class BaseTests {
         String email;
         String password;
 
-        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/loginUser.txt")));
+        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/userLogin.csv")));
         String line = reader.readLine();
         String[] split = line.split(",");
 
