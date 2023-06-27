@@ -6,6 +6,8 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 
+import java.io.*;
+
 public class BaseTests {
     static ApplicationManager app = new ApplicationManager();
 
@@ -14,11 +16,20 @@ public class BaseTests {
         app.start();
 
     }
+
     @BeforeClass
-    public void preConditions(){
+    public void preConditions() throws IOException {
+        String email;
+        String password;
+
+        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/loginUser.txt")));
+        String line = reader.readLine();
+        String[] split = line.split(",");
+
+
         UserLogin user = UserLogin.builder()
-                .email("y.shvydak@icloud.com")
-                .password("qweQWE123!@#")
+                .email(split[0])
+                .password(split[1])
                 .build();
 
         app.homePage().clickContinueWithEmailButton();
