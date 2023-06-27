@@ -19,7 +19,7 @@ public class BaseTests {
 
     @BeforeClass
     public void preConditions() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(new File("userLogin.csv")));
+        BufferedReader reader = new BufferedReader(new FileReader(new File("loginUser.csv")));
         String line = reader.readLine();
         String[] split = line.split(",");
 
