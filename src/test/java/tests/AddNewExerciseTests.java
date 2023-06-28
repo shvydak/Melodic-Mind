@@ -4,7 +4,7 @@ import com.github.javafaker.Faker;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class ExerciseTests extends BaseTests {
+public class AddNewExerciseTests extends BaseTests {
 
     @Test(invocationCount = 1)
     public void test1() {
@@ -27,6 +27,5 @@ public class ExerciseTests extends BaseTests {
         app.exercisesPage().clickSaveExerciseButton();
         Assert.assertTrue(app.exercisesPage().isExerciseSaved(exerciseName));
         app.exercisesPage().maxNumberOfItems(2);
-
     }
 }

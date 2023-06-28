@@ -4,7 +4,6 @@ import manager.ApplicationManager;
 import manager.UserLogin;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 
 import java.io.*;
