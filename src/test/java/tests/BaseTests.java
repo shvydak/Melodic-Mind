@@ -2,6 +2,7 @@ package tests;
 
 import manager.ApplicationManager;
 import manager.UserLogin;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
@@ -12,13 +13,8 @@ public class BaseTests {
     static ApplicationManager app = new ApplicationManager();
 
     @BeforeSuite
-    public void setUp() {
+    public void setUp() throws IOException {
         app.start();
-
-    }
-
-    @BeforeClass
-    public void preConditions() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(new File("loginUser.csv")));
         String line = reader.readLine();
         String[] split = line.split(",");
@@ -30,6 +26,12 @@ public class BaseTests {
 
         app.homePage().clickContinueWithEmailButton();
         app.signInPage().login(user);
+    }
+
+    @AfterClass
+    public void openHomePage() {
+        app.mainPage().clickBurgerMenu();
+        app.mainPage().clickMenuHomeButton();
     }
 
     @AfterSuite
