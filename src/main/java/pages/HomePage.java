@@ -12,10 +12,14 @@ public class HomePage extends BaseHelper {
 
     @FindBy(xpath = "//span[text()=' Continue with Email ']")
     WebElement continueWithEmailButton;
+    @FindBy(xpath = "//span[text()=' Sign in/up ']")
+    WebElement signInUpButton;
 
     public void clickContinueWithEmailButton() {
         continueWithEmailButton.click();
     }
 
-
+    public void clickSignInUpButton() {
+        signInUpButton.click();
+    }
 }
